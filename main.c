@@ -1,90 +1,64 @@
-#include <stdio.h>
 #include <stdlib.h>
-#include <Windows.h>
+#include <stdio.h>
 #include <string.h>
 
-int main(){
-    system("color f0");
+int main() {
 
     int opcao;
-    int cadastroAluno;
-    char aluno[5][20];
-    char voltarMenu;
-    float notas[5][4];
-    int cont;
-    int nota;
+    char nomeAluno[5][50];
+    float notaAluno[4][5]
+    char retornarMenu;
 
+    while (1) {
+        system("cls");
+        printf("==========={Bem vindo ao sistema!}============ \n\n");
+        printf("\n1 Cadastrar nota de aluno");
+        printf("\n2 Consultar nota");
+        printf("\n3 Sair\n\n");
+        printf("==============================================\n\n");
+        printf("Digite a opcao desejada: ");
+        scanf("%i", &opcao);
+        fflush(stdin);
 
-    printf("Aguarde o carregamento...\n");
-    Sleep(500);
-    system("cls");
-    while(1){
-        void cadastro(){
-                system("cls");
-                printf("========== Bem vindo ao sistema ========== \n");
+        if (opcao == 1) {
+            system("cls");
+            printf("==============={Cadastro de aluno!}=============== \n\n");
 
-                printf("\n1 Cadastrar aluno\n");
-                printf("\n2 Editar notas\n");
-                printf("\n3 Consultar notas\n");
-                printf("\n4 Sair \n\n");
-                printf("Digite o numero da opcao: ");
+            printf("Insira o nome do aluno: ");
+            scanf("%s", nomeAluno);
+            printf("\n");
 
-                scanf("%i", &opcao);
-        }
-
-        void voltarTela(){
-            printf("Deseja voltar para a tela inical? S/N");
-            scanf("%s", &voltarMenu);
-
-            if (voltarMenu == "S" || voltarMenu == "s"){
-                printf("voltando...");
-                sleep(1);
-                system("cls");
-                cadastro();
-            }else{
-                printf("Fechando sistema...");
-                exit(0);
+            for (int nota = 0; nota < 4; nota++) {
+                printf("Qual a %i nota de %s? ", nota + 1, nomeAluno);
+                scanf("%f", &notaAluno[nota]);
             }
-        }
-
-        cadastro();
-
-        switch(opcao) {
-            case 1:
-                for(cont = 0; cont < 5; cont++){
-                    system("cls");
-                    printf("====================[Cadastro Aluno]====================\n\n");
-                    printf("Insira o nome do aluno: ");
-                    scanf("%s", &aluno[cont]);
-                    for(nota = 0; nota < 4; nota++){
-                        printf("Qual a nota do aluno?");
-                        scanf("%f", &notas[cont][nota]);
-                    }
+        } else if (opcao == 2) {
+            system("cls");
+            printf("==============={Consulta de notas!}=============== \n\n");
+            for (int i = 0; i < ++i) {
+                printf("Aluno: %s\n", nomeAluno[i]);
+                for (int nota = 0; nota < 4; nota++) {
+                    printf("%i nota: %.2f\n", nota + 1, notaAluno[nota]);
                 }
-                break;
-            case 2:
-                system("cls");
-                printf("Em contrucao... \n");
-                voltarTela();
-                break;
-            case 3:
-                system("cls");
-                printf("Em construcao...\n\n");
-                voltarTela();
-                break;
-            case 4:
-                printf("saindo...");
-                sleep(1);
-                exit(0);
-                break;
-            default:
-                printf("numero digitado incorretamente.\n");
-                printf("Digite corretamente.");
-                sleep(1);
-                system("cls");
-                cadastro();
+            }
+
+
+            float media = (notaAluno[0] + notaAluno[1] + notaAluno[2] + notaAluno[3]) / 4.0;
+            printf("A media sera: %.2f \n", media);
+            printf("================================================\n");
+
+            printf("Deseja retornar? S/N \n");
+            scanf(" %c", &retornarMenu);
+            if (retornarMenu == 'S' || retornarMenu == 's') {
+                printf("Voltando...");
+            }else{
+                exit(1);
+            }
+        } else if (opcao == 3) {
+            break;
+        } else {
+            printf("Opcao invalida! Tente novamente.\n");
         }
     }
     return 0;
-
 }
