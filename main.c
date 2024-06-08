@@ -83,9 +83,9 @@ int main() {
             printf("Deseja alterar a nota de qual aluno?: ");
             scanf("%s", nomeAluno);
             for (int i = 0; i < 1; i++){
-            printf("Insira as novas notas para o aluno %s", nomeAluno[i]);
+            printf("\nInsira as novas notas para o aluno %s", nomeAluno[i]);
                 for (int nota = 0; nota < 4; nota++) {
-                    printf("Qual a %i nota de %s? ", nota + 1, nomeAluno[i]);
+                    printf("\nQual a %i nota de %s? ", nota + 1, nomeAluno[i]);
                     scanf("%f", &notaAluno[i][nota]);
                 }
             }
